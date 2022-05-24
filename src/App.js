@@ -1,6 +1,6 @@
 
 import './App.css';
-import Reproductor from './audio';
+import Reproductor from './components/js/audio';
 
 function App() {
   return (
