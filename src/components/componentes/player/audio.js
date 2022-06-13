@@ -2,11 +2,22 @@ import React, { Component } from "react"
 import { Howl } from 'howler';
 import './audio.css';
 
+class Timer extends React.Component {
+
+  render() {
+    var minute = ~~(this.props.currentTime % 3600 / 60),
+    second = ~~(this.props.currentTime % 60)
+    var t = ""+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second)
+    return(<div>
+      {this.props.currentTime}
+      <p>{t}</p>
+    </div>)
+  }
+}
 class Reproductor extends Component {
 
   constructor(props) {
     super(props);
-    console.log();
     this.state = {
       playing: true,
       loaded: false,
@@ -14,9 +25,11 @@ class Reproductor extends Component {
       volume: 1.0,
       seek: 0.0,
       duration: 0.0,
-      currentTime: 0.0,
+      currentTime: 0,
       timer: 0.0,
-      position:0
+      position:0,
+      minute:0,
+      second:0,
     }
     
     this.music = new Howl({
@@ -31,15 +44,31 @@ class Reproductor extends Component {
   }
 
   componentDidMount() {
-    
+    this.music.once('load',() => {
+      this.setState({
+        duration:this.music._duration,
+      })
+    })
   }
+
+  _timerStart = () => {this.time = setInterval(() => {
+    this.setState({
+      currentTime:this.state.currentTime + 1
+    })
+    document.getElementById("duracion").value = this.state.currentTime
+  },1000)}
+
+  _timerStop = () => {clearInterval(this.time)}
+
   _handlePlay = () => {
     this.music.play()
+    this._timerStart()
     console.log('play')
   }
 
   _handlePause = () => {
     this.music.pause()
+    this._timerStop()
     console.log('pause')
   }
 
@@ -52,12 +81,6 @@ class Reproductor extends Component {
     } else {
       this._handlePause()
     }
-  }
-  _handleDuration() {
-    this.setState({
-      duration: this.music.duration()
-    })
-    
   }
 
   _handleSeek = () => {
@@ -72,16 +95,12 @@ class Reproductor extends Component {
     this.setState({
       volume: document.getElementById("volumen").value / 100
     })
-    this._handleChangeVolume()
-  }
-
-  _handleChangeVolume = () => {
     this.music.volume(this.state.volume)
   }
 
   _handleCurrentDuration = () => {
     this.setState({
-      currentTime: document.getElementById("duracion").value
+      currentTime: parseInt(document.getElementById("duracion").value)
     })
     this.music.seek(this.state.currentTime)
 
@@ -92,7 +111,8 @@ class Reproductor extends Component {
     console.log(this.state.position)
     if(this.state.position < this.props.music.length - 1){
       this.setState({
-        position:this.state.position + 1
+        position:this.state.position + 1,
+        currentTime:0,
       })
     }else{
       this.setState({
@@ -116,7 +136,8 @@ class Reproductor extends Component {
     console.log(this.state.position)
     if(this.state.position > 0){
       this.setState({
-        position:this.state.position - 1
+        position:this.state.position - 1,
+        currentTime: 0,
       })
     }else{
       this.setState({
@@ -143,12 +164,15 @@ class Reproductor extends Component {
     } else {
       btn = <img src={require("../../icons/pause.png")} alt="pause" width="50%" height="50%" />;
     }
+    var minute = ~~(this.state.duration % 3600 / 60),
+    second = ~~(this.state.duration % 60)
+    var t = ""+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second)
     return (
       <div>
         <div>
           <p>props:{JSON.stringify(this.props.music)}</p>
-          <p>props lenght: {this.props.music.length}</p>
-          <p>duracion: {(this.state.duration % 3600 / 60).toFixed(2)}</p>
+          <p>lenght: {this.state.duration}</p>
+          <p>duracion: {t}</p>
           <button onClick={this._handleToggle} className="btn_player" width="20%" height="20%">
             {btn}
           </button>
@@ -157,7 +181,7 @@ class Reproductor extends Component {
         </div>
         <div>
           {this.state.currentTime}
-          { }
+          <Timer currentTime={this.state.currentTime} playing={this.state.playing}/>
           <input type="range" id="duracion" max={this.state.duration} min='0'
             onChange={this._handleCurrentDuration} />
         </div>
