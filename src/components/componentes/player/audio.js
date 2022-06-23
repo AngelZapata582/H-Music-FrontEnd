@@ -1,16 +1,18 @@
 import React, { Component } from "react"
 import { Howl } from 'howler';
 import './audio.css';
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
+import Container from 'react-bootstrap/Container'
 
 class Timer extends React.Component {
 
   render() {
     var minute = ~~(this.props.currentTime % 3600 / 60),
-    second = ~~(this.props.currentTime % 60)
-    var t = ""+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second)
-    return(<div>
-      {this.props.currentTime}
-      <p>{t}</p>
+      second = ~~(this.props.currentTime % 60)
+    var t = "" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second)
+    return (<div>
+      <p className="text-light">{t}</p>
     </div>)
   }
 }
@@ -27,38 +29,40 @@ class Reproductor extends Component {
       duration: 0.0,
       currentTime: 0,
       timer: 0.0,
-      position:0,
-      minute:0,
-      second:0,
+      position: 0,
+      minute: 0,
+      second: 0,
     }
-    
+
     this.music = new Howl({
-      src: ["http://localhost:8000/api/music/"+props.music[this.state.position].nombre],
+      src: ["http://localhost:8000/api/music/" + props.music[this.state.position].nombre],
       html5: true,
       volume: 1.0,
       format: ['mp3'],
-      onload: function (){
+      onload: function () {
         console.log("cargado")
       }
     });
   }
 
   componentDidMount() {
-    this.music.once('load',() => {
+    this.music.once('load', () => {
       this.setState({
-        duration:this.music._duration,
+        duration: this.music._duration,
       })
     })
   }
 
-  _timerStart = () => {this.time = setInterval(() => {
-    this.setState({
-      currentTime:this.state.currentTime + 1
-    })
-    document.getElementById("duracion").value = this.state.currentTime
-  },1000)}
+  _timerStart = () => {
+    this.time = setInterval(() => {
+      this.setState({
+        currentTime: this.state.currentTime + 1
+      })
+      document.getElementById("duracion").value = this.state.currentTime
+    }, 1000)
+  }
 
-  _timerStop = () => {clearInterval(this.time)}
+  _timerStop = () => { clearInterval(this.time) }
 
   _handlePlay = () => {
     this.music.play()
@@ -109,22 +113,22 @@ class Reproductor extends Component {
   _handleNextMusic = () => {
     this.music.unload()
     console.log(this.state.position)
-    if(this.state.position < this.props.music.length - 1){
+    if (this.state.position < this.props.music.length - 1) {
       this.setState({
-        position:this.state.position + 1,
-        currentTime:0,
+        position: this.state.position + 1,
+        currentTime: 0,
       })
-    }else{
+    } else {
       this.setState({
-        position:0
+        position: 0
       })
     }
     this.music = new Howl({
-      src: ["http://localhost:8000/api/music/"+this.props.music[this.state.position].nombre],
+      src: ["http://localhost:8000/api/music/" + this.props.music[this.state.position].nombre],
       html5: true,
       volume: 1.0,
       format: ['mp3'],
-      onload: function (){
+      onload: function () {
         console.log("cargado")
       }
     });
@@ -134,23 +138,23 @@ class Reproductor extends Component {
   _handlePrevMusic = () => {
     this.music.unload()
     console.log(this.state.position)
-    if(this.state.position > 0){
+    if (this.state.position > 0) {
       this.setState({
-        position:this.state.position - 1,
+        position: this.state.position - 1,
         currentTime: 0,
       })
-    }else{
+    } else {
       this.setState({
-        position:this.props.music.length - 1
+        position: this.props.music.length - 1
       })
     }
-    
+
     this.music = new Howl({
-      src: ["http://localhost:8000/api/music/"+this.props.music[this.state.position].nombre],
+      src: ["http://localhost:8000/api/music/" + this.props.music[this.state.position].nombre],
       html5: true,
       volume: 1.0,
       format: ['mp3'],
-      onload: function (){
+      onload: function () {
         console.log("cargado")
       }
     });
@@ -165,30 +169,49 @@ class Reproductor extends Component {
       btn = <img src={require("../../icons/pause.png")} alt="pause" width="50%" height="50%" />;
     }
     var minute = ~~(this.state.duration % 3600 / 60),
-    second = ~~(this.state.duration % 60)
-    var t = ""+(minute<10?"0"+minute:minute)+":"+(second<10?"0"+second:second)
+      second = ~~(this.state.duration % 60)
+    var t = "" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second)
+    
     return (
-      <div>
+      <div className="bg_player">
         <div>
-          <p>props:{JSON.stringify(this.props.music)}</p>
-          <p>lenght: {this.state.duration}</p>
-          <p>duracion: {t}</p>
-          <button onClick={this._handleToggle} className="btn_player" width="20%" height="20%">
-            {btn}
-          </button>
-          <input type="range" id="volumen" min="0" max="100" onChange={this._handleVolumen} />
-          <p>{this.state.volume}</p>
+          <Container>
+            <Row className="justify-content-center">
+              <Col md={{ span: 4, offset: 2 }}>
+                <button type="button" id="prev" className="btn_np" onClick={this._handlePrevMusic}  width="10%" height="10%">
+                  <img src={require("../../icons/previous.png")} alt="anterior" width="45%" height="45%" />
+                </button>
+                <button onClick={this._handleToggle} className="btn_player" width="20%" height="20%">
+                  {btn}
+                </button>
+                <button type="button" id="next" className="btn_np" onClick={this._handleNextMusic} width="10%" height="10%">
+                  <img src={require("../../icons/next.png")} alt="siguiente" width="45%" height="45%" />
+                </button>
+              </Col>
+              <Col md={2} className="m-4">
+                <input type="range" id="volumen" min="0" max="100" className="slider_volume" onChange={this._handleVolumen} />
+              </Col>
+            </Row>
+          </Container>
         </div>
         <div>
-          {this.state.currentTime}
-          <Timer currentTime={this.state.currentTime} playing={this.state.playing}/>
+          <Container>
+            <Row>
+              <Col md={2}>
+                <Timer currentTime={this.state.currentTime} playing={this.state.playing} />
+              </Col>
+              <Col md={{ span: 2, offset: 8 }}>
+                <p className="text-light">{t}</p>
+              </Col>
+            </Row>
+          </Container>
+        </div>
+        <div>
           <input type="range" id="duracion" max={this.state.duration} min='0'
-            onChange={this._handleCurrentDuration} />
+            onChange={this._handleCurrentDuration} className="slider" />
+
         </div>
-        <div>
-          <button type="button" id="prev" onClick={this._handlePrevMusic}>prev</button>
-          <button type="button" id="next" onClick={this._handleNextMusic}>next</button>
-        </div>
+
       </div>
     )
   }
