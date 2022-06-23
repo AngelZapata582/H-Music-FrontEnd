@@ -1,5 +1,6 @@
 
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Reproductor from './components/componentes/player/audio.js';
 const music = [
   {nombre:"track1/mp3"},
