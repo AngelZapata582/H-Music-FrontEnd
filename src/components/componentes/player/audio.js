@@ -177,7 +177,12 @@ class Reproductor extends Component {
         <div>
           <Container>
             <Row className="justify-content-center">
-              <Col md={{ span: 4, offset: 2 }}>
+              <Col>
+                <p className="text-light fs-6 my-2">{this.props.music[this.state.position].nombre}</p>
+              </Col>
+            </Row>
+            <Row >
+              <Col md={{ span: 4, offset: 4 }}>
                 <button type="button" id="prev" className="btn_np" onClick={this._handlePrevMusic}  width="10%" height="10%">
                   <img src={require("../../icons/previous.png")} alt="anterior" width="45%" height="45%" />
                 </button>
