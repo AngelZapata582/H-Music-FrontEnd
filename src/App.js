@@ -1,11 +1,11 @@
 
 import './App.css';
-import Reproductor from './components/js/audio';
+import Navbar from './components/js/navbar.js';
 
 function App() {
   return (
     <div className="App">
-      <Reproductor/>
+      <Navbar/>
     </div>
   );
 }
