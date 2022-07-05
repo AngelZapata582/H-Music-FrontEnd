@@ -16,6 +16,17 @@ class Timer extends React.Component {
     </div>)
   }
 }
+
+class TotalTimer extends React.PureComponent {
+  render() {
+    var minute = ~~(this.props.Time % 3600 / 60),
+      second = ~~(this.props.Time % 60)
+    var t = "" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second)
+    return (<div>
+      <p className="text-light">{t}</p>
+    </div>)
+  }
+}
 class Reproductor extends Component {
 
   constructor(props) {
@@ -51,6 +62,11 @@ class Reproductor extends Component {
         duration: this.music._duration,
       })
     })
+  }
+
+  componentWillUnmount(){
+    this.music.pause()
+    this.music.unload()
   }
 
   _timerStart = () => {
@@ -112,7 +128,6 @@ class Reproductor extends Component {
 
   _handleNextMusic = () => {
     this.music.unload()
-    console.log(this.state.position)
     if (this.state.position < this.props.music.length - 1) {
       this.setState({
         position: this.state.position + 1,
@@ -120,9 +135,11 @@ class Reproductor extends Component {
       })
     } else {
       this.setState({
-        position: 0
+        position: 0,
+        currentTime: 0,
       })
     }
+    console.log(this.state.position)
     this.music = new Howl({
       src: ["http://localhost:8000/api/music/" + this.props.music[this.state.position].nombre],
       html5: true,
@@ -132,12 +149,16 @@ class Reproductor extends Component {
         console.log("cargado")
       }
     });
+    this.music.once('load', () => {
+      this.setState({
+        duration: this.music._duration,
+      })
+    })
     this.music.play()
   }
 
   _handlePrevMusic = () => {
     this.music.unload()
-    console.log(this.state.position)
     if (this.state.position > 0) {
       this.setState({
         position: this.state.position - 1,
@@ -145,10 +166,11 @@ class Reproductor extends Component {
       })
     } else {
       this.setState({
-        position: this.props.music.length - 1
-      })
+        position: this.props.music.length - 1,
+        currentTime: 0,
+      }) 
     }
-
+    console.log(this.state.position)
     this.music = new Howl({
       src: ["http://localhost:8000/api/music/" + this.props.music[this.state.position].nombre],
       html5: true,
@@ -158,6 +180,11 @@ class Reproductor extends Component {
         console.log("cargado")
       }
     });
+    this.music.once('load', () => {
+      this.setState({
+        duration: this.music._duration,
+      })
+    })
     this.music.play();
   }
 
@@ -168,9 +195,6 @@ class Reproductor extends Component {
     } else {
       btn = <img src={require("../../icons/pause.png")} alt="pause" width="50%" height="50%" />;
     }
-    var minute = ~~(this.state.duration % 3600 / 60),
-      second = ~~(this.state.duration % 60)
-    var t = "" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second)
     
     return (
       <div className="bg_player">
@@ -182,7 +206,7 @@ class Reproductor extends Component {
               </Col>
             </Row>
             <Row >
-              <Col md={{ span: 4, offset: 4 }}>
+              <Col md={{ span: 4, offset: 4 }} sm={{ span: 5, offset: 3 }}>
                 <button type="button" id="prev" className="btn_np" onClick={this._handlePrevMusic}  width="10%" height="10%">
                   <img src={require("../../icons/previous.png")} alt="anterior" width="45%" height="45%" />
                 </button>
@@ -193,7 +217,7 @@ class Reproductor extends Component {
                   <img src={require("../../icons/next.png")} alt="siguiente" width="45%" height="45%" />
                 </button>
               </Col>
-              <Col md={2} className="m-4">
+              <Col md={2} sm={2} className="m-4">
                 <input type="range" id="volumen" min="0" max="100" className="slider_volume" onChange={this._handleVolumen} />
               </Col>
             </Row>
@@ -202,11 +226,11 @@ class Reproductor extends Component {
         <div>
           <Container>
             <Row>
-              <Col md={2}>
+              <Col md={2} sm={2}>
                 <Timer currentTime={this.state.currentTime} playing={this.state.playing} />
               </Col>
-              <Col md={{ span: 2, offset: 8 }}>
-                <p className="text-light">{t}</p>
+              <Col md={{ span: 2, offset: 8 }} sm={{ span: 2, offset: 8 }}>
+                <TotalTimer Time={this.state.duration}/>
               </Col>
             </Row>
           </Container>
