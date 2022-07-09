@@ -1,0 +1,58 @@
+.bg-black{
+    background-color: black;
+}
+
+.bg-grey{
+    background-color: #E5E5E5;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.ancho{
+    max-height: 100%;
+}
+
+.overflow{
+    overflow-x: hidden;
+}
+
+.text-blue{
+    color: #2B5CBA;
+}
+
+.text-grey{
+    color: #5E5E5E;
+}
+
+.text-album{
+    font-size: 65px;
+}
+
+
+.text-titulo{
+    font-size: 100px;
+    top: 15%;
+    left: 17%;
+}
+
+.text-span{
+    top: 55%;
+    left: 17.5%;
+}
+
+.marco{
+    border: solid 10px #2B5CBA;
+    border-right: 0px;
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 27%;
+    height: 80%;
+}
+
+.line{
+    height: 15px;
+    background-color: #2B5CBA;
+}
