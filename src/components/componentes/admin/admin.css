@@ -1,3 +1,9 @@
 .bg{
-    background-color: #404040;
+    background-color: #020202;
+    height:100vh;
+}
+
+.btn_admin{
+    border-radius: 50px;
+    border-color:transparent;
 }
