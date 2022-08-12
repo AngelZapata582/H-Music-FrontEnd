@@ -1,0 +1,16 @@
+.bg {
+    background-color: black;
+    
+    
+    }
+    
+    
+    
+    .letras {
+       color: white;
+    }
+    .line{
+        background-color:aqua;
+        width: 2px;
+        height: 105px;
+    }
