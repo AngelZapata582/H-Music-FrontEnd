@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import '../css/login.css';
 import logo from '../img/logo.png';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
+
 
 class Login extends Component {
     state = {
@@ -35,7 +35,13 @@ class Login extends Component {
         axios.post(`http://127.0.0.1:8000/api/login`,request).then(res => {
                 console.log(res);
                 console.log(res.data);
+                if(res.data.status){
+                    alert("Bienvenido a H-Music")
+                }else{
+                    alert("Ups! Algo está incorrecto")
+                }
             })
+            
     }
 
   render() {

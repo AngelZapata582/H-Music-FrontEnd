@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import '../css/registro.css';
 import logo from '../img/logo.png';
 import axios from 'axios';
-import Form from 'react-bootstrap/Form';
+
 class Registro extends Component {
     
    state = {
