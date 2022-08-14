@@ -1,0 +1,49 @@
+.bg-black{
+    background-color: black;
+}
+
+.bg-grey{
+    background-color: #E5E5E5;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.overflow{
+    overflow-x: hidden;
+}
+
+.text-blue{
+    color: #2B5CBA;
+}
+
+.text-grey{
+    color: #5E5E5E;
+}
+
+.radius{
+    border-radius: 20px;
+}
+
+.bg-b{
+    position: absolute;
+    background-color: #2B5CBA;
+    top: 30%;
+    left:0;
+    width: 1000px;
+    height: 100px;
+}
+
+
+.line{
+    height: 15px;
+    background-color: #2B5CBA;
+}
+
+.line2{
+    background-color: #2B5CBA;
+    width: 1px;
+    height: 45%;
+}
+
