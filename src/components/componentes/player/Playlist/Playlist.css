@@ -1,0 +1,20 @@
+.Container{
+    background-color: black;
+}
+.Table{
+    width: 500px;
+    height: 500px;
+}
+.Head{
+    color: azure;
+}
+.Info{
+    color: azure;
+}
+/*.line{
+    border-top: 1px solid #2B5CBA;
+    height: 2px;
+    width: 800px;
+    padding: 0;
+    margin: 20px auto 0 auto;
+}*/
