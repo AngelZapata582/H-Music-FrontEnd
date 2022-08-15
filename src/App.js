@@ -16,7 +16,12 @@ const music = [
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
       <Playlist/>
+=======
+      <Reproductor music={music}/>
+      <RouterPaths/>
+>>>>>>> 1e68e70741d12a8dcf3cb68de756be449a849b1b
     </div>
   );
 }
