@@ -17,7 +17,7 @@ const music = [
 function App() {
   return (
     <div className="App">
-      <Playlist/>
+      <Perfil/>
       {/* <Reproductor music={music}/>
       <RouterPaths/> */}
     </div>

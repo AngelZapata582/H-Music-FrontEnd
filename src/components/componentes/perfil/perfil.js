@@ -134,22 +134,24 @@ class Perfil extends React.Component {
     
             return ( /* position-relative */
                 <div className="position-relative bg-black ">
-                    <div className="container-fluid">
-                        
-                <div className="row bg-black p-3 text-white ">
-                    <div className="col text-start"><img src={logo} alt="H-Music" className="img-fluid " width={100}></img></div>
-
-                    <div className="col text-end"> 
-                        <button  className="btn btn-light btn-sm rounded-pill px-3 me-3" type="button">Registrarme</button>
-                        
-                        <button  className="btn btn-primary btn-sm rounded-pill px-3" type="button">Iniciar sesion</button>
+                {/* Navbar User */}
+                <div className="container-fluid">
+                            <div className="row bg-black p-3 text-white ">
+                            <div className="col text-start"><h5>H-Music</h5></div>
+                            <div className="col text-end"> 
+                            <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button">
+                            <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
+                                Juanvazquez
+                                </button>
+                            <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button">Cerrar sesion</button>
+                            </div>
+                        </div>
                     </div>
 
-                    </div>
-                </div>
+                    <div className="bg-grey"><br/> <br/> <br/> <br/></div>
                 
                 <div className="container-fluid">
-                    <br/> <br/> <br/> <br/>
+                    
                     <div className="row bg-grey justify-content-center pt-5">
                         <div className="col-lg-4 bg-white align-self-center">
                             <div className="row ">
@@ -223,13 +225,26 @@ class Perfil extends React.Component {
         }else{
             return (
                 <div className="position-relative bg-black ">
-                <div className="container-fluid">
-                    <div className="row bg-black p-3 text-white">Navbar</div>
-                </div>
+                    {/* Navbar User */}
+                    <div className="container-fluid">
+                            <div className="row bg-black p-3 text-white ">
+                            <div className="col text-start"><h5>H-Music</h5></div>
+                            <div className="col text-end"> 
+                            <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button">
+                            <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
+                                Juanvazquez
+                                </button>
+                            <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button">Cerrar sesion</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="bg-grey"><br/> <br/> <br/> <br/></div>
                 
-                <div className="container-fluid">
-                    <br/> <br/> <br/> <br/>
+                <div className="container-fluid ">
+                    
                     <div className="row bg-grey justify-content-center pt-5">
+                    
                         <div className="col-lg-4 bg-white align-self-center">
                             <div className="row ">
                                     <div className="col p-3">
@@ -255,7 +270,7 @@ class Perfil extends React.Component {
                     <div className="row p-5">
                             <h3 className="text-start text-bold text-white">Mis Playlists</h3>
                     </div>
-                    <h5  className="text-white"> No hay playlist registradas</h5>
+                    <h5  className="text-white bg-black"> No hay playlist registradas</h5>
                 </div>
     
                 {/* Footer  */}
