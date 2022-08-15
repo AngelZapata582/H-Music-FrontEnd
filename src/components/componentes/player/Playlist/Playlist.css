@@ -18,3 +18,16 @@
     padding: 0;
     margin: 20px auto 0 auto;
 }*/
+
+
+.bg-black{
+    background-color: black;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.overflow{
+    overflow-x: hidden;
+}
