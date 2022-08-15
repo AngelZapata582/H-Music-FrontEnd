@@ -134,8 +134,18 @@ class Perfil extends React.Component {
     
             return ( /* position-relative */
                 <div className="position-relative bg-black ">
-                <div className="container-fluid">
-                    <div className="row bg-black p-3 text-white">Navbar</div>
+                    <div className="container-fluid">
+                        
+                <div className="row bg-black p-3 text-white ">
+                    <div className="col text-start"><img src={logo} alt="H-Music" className="img-fluid " width={100}></img></div>
+
+                    <div className="col text-end"> 
+                        <button  className="btn btn-light btn-sm rounded-pill px-3 me-3" type="button">Registrarme</button>
+                        
+                        <button  className="btn btn-primary btn-sm rounded-pill px-3" type="button">Iniciar sesion</button>
+                    </div>
+
+                    </div>
                 </div>
                 
                 <div className="container-fluid">
@@ -164,7 +174,7 @@ class Perfil extends React.Component {
     
                 <div className="container-fluid bg-black ">
                     <div className="row p-5">
-                            <h3 className="text-start text-bold text-white">Mis Playlists</h3>
+                            <h3 className="text-start text-bold text-white">Mis Playlists </h3>
                     </div>
     
                     {getPlaylists()}

@@ -64,3 +64,16 @@
         visibility: visible;
     }
 }
+
+
+.bg-black{
+    background-color: black;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.overflow{
+    overflow-x: hidden;
+}
