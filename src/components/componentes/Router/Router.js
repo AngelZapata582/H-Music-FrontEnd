@@ -9,7 +9,7 @@ export default class RouterPaths extends React.Component{
                 <Routes>
                     <Route exact path="/admin" element={<FilterTableMusic/>}/>
                     <Route render={() => <h1>404: Page Not Found</h1>}/>
-                    <Route exact path="/login" element={<Login/>}
+                    <Route exact path="/login" element={<Login/>}/>
                 </Routes>
             </Router>
         )
