@@ -14,8 +14,9 @@ const music = [
 function App() {
   return (
     <div className="App">
-      <Reproductor music={music}/>
-      <RouterPaths/>
+      <Playlist/>
+      {/* <Reproductor music={music}/>
+      <RouterPaths/> */}
     </div>
   );
 }

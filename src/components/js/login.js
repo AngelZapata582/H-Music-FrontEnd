@@ -71,6 +71,9 @@ class Login extends Component {
                   <button type="submit" className="btn btn-primary text-center rounded-pill">Iniciar</button>
 
                   </div>
+                  <div className="text">
+                    <a href="#" class="card-link">Registrarme</a>
+                    </div>
               </form>
           </div>
       </div>
