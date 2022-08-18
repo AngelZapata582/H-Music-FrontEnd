@@ -6,6 +6,7 @@ import FilterTableMusic from './components/componentes/admin/admin.js';
 import Playlist from './components/componentes/player/Playlist/Playlist';
 import HomeLogin from './components/componentes/player/HomeLogin/Homelogin';
 import Perfil from './components/componentes/perfil/perfil.js';
+import Login from './components/js/login.js';
 
 const music = [
   {nombre:"track1/mp3"},
@@ -17,7 +18,7 @@ const music = [
 function App() {
   return (
     <div className="App">
-      <Playlist/>
+      <Login/>
       {/* <Reproductor music={music}/>
       <RouterPaths/> */}
     </div>
