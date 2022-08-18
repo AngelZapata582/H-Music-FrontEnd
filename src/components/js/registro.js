@@ -79,6 +79,10 @@ class Registro extends Component {
                     <button type="submit" className="btn btn-primary text-center rounded-pill">Registrarme</button>
 
                     </div>
+
+                    <div className="text">
+                    <a href="#" class="card-link">Iniciar Sesión</a>
+                    </div>
                 </form>
             </div>
         </div>
