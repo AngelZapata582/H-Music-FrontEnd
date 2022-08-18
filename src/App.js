@@ -17,7 +17,7 @@ const music = [
 function App() {
   return (
     <div className="App">
-      <Perfil/>
+      <HomeLogin/>
       {/* <Reproductor music={music}/>
       <RouterPaths/> */}
     </div>

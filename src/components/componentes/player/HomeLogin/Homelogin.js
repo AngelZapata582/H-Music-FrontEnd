@@ -1,9 +1,7 @@
 import React, {Component} from "react";
 import './HomeLogin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Carousel from 'react-bootstrap/Carousel';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card'
+import {Stack, Carousel, Card, Button} from 'react-bootstrap';
 import logo from '../../../img/logo.png';
 import user from '../../../img/user.png';
 import pop from '../../../img/pop.png';
@@ -13,6 +11,28 @@ import cumbia from '../../../img/cumbia.png';
 
     //Funciones de carrusel 
     function IndividualIntervalsExample() {
+      const reviews = [
+        { _id: 1, text: "abc" },
+        { _id: 2, text: "def" },
+        { _id: 3, text: "ghi" },
+        { _id: 4, text: "jkl" },
+        { _id: 5, text: "mno" },
+        { _id: 6, text: "pqr" },
+        { _id: 7, text: "stu" },
+        { _id: 8, text: "vwx" },
+        { _id: 9, text: "yza" }
+      ];
+      const reviews2 = [
+        { _id: 1, text: "abc" },
+        { _id: 2, text: "def" },
+        { _id: 3, text: "ghi" },
+        { _id: 4, text: "jkl" },
+        { _id: 5, text: "mno" },
+        { _id: 6, text: "pqr" },
+        { _id: 7, text: "stu" },
+        { _id: 8, text: "vwx" },
+        { _id: 9, text: "yza" }
+      ];
       return (
         <div className="overflow bg-black">
           {/* Navbar User */}
@@ -29,43 +49,144 @@ import cumbia from '../../../img/cumbia.png';
             </div>
           </div>
         
-        
-          <><><div>
-            <Carousel>
-              <Carousel.Item interval={1000}>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src="holder.js/100px180" />
+        //carrusel 1
+        <div>
+      <div className="bg-dark bg-opacity-25 container-fluid">
+        <Carousel style={{ height: 500 }}>
+          {reviews.map((review, index) => (
+            <Carousel.Item style={{ height: 500 }}>
+              <Stack
+                direction="horizontal"
+                className="h-100 justify-content-center align-items-center"
+                gap={9}
+              >
+                <Card style={{ width: "18rem" }}>
                   <Card.Body>
-                    <Card.Title>Card Title</Card.Title>
-
+                    <img src={rock}></img>
                   </Card.Body>
                 </Card>
-              </Carousel.Item>
-              <Carousel.Item interval={1000}>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src="holder.js/100px180" />
-                  <Card.Body>
-                    <Card.Title>Card Title 2</Card.Title>
 
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={pop}></img>
                   </Card.Body>
                 </Card>
-              </Carousel.Item>
-              <Carousel.Item>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src="holder.js/100px180" />
-                  <Card.Body>
-                    <Card.Title>Card Title 3</Card.Title>
 
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                  <img src={clasica}></img>
+                    </Card.Body>
+                </Card>
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={rock}></img>
                   </Card.Body>
                 </Card>
-              </Carousel.Item>
-            </Carousel>
 
-            
-          </div>
-          <Button variant="primary">Primary</Button></><Button variant="secondary">Secondary</Button>
-          </>     
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={pop}></img>
+                  </Card.Body>
+                </Card>
 
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                  <img src={clasica}></img>
+                    </Card.Body>
+                </Card>
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={rock}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={pop}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                  <img src={clasica}></img>
+                    </Card.Body>
+                </Card>
+              </Stack>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+    </div>
+          //Cierre de carrusel 1
+          //carrusel 2
+        <div>
+      <div className="bg-dark bg-opacity-25 container-fluid">
+        <Carousel style={{ height: 500 }}>
+          {reviews2.map((review, index) => (
+            <Carousel.Item style={{ height: 500 }}>
+              <Stack
+                direction="horizontal"
+                className="h-100 justify-content-center align-items-center"
+                gap={9}
+              >
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={rock}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={pop}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                  <img src={clasica}></img>
+                    </Card.Body>
+                </Card>
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={rock}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={pop}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                  <img src={clasica}></img>
+                    </Card.Body>
+                </Card>
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={rock}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                    <img src={pop}></img>
+                  </Card.Body>
+                </Card>
+
+                <Card style={{ width: "18rem" }}>
+                  <Card.Body>
+                  <img src={clasica}></img>
+                    </Card.Body>
+                </Card>
+              </Stack>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+    </div>
+          //Cierre de carrusel 2
           <div className="container-fluid bg-black ">
             <div className="row p-5">
               <h3 className="text-start text-bold text-white">Categorias</h3>
@@ -74,7 +195,7 @@ import cumbia from '../../../img/cumbia.png';
             <div className="row p-3 pb-4 justifiy-content-center">
                           <div className="col g-0">
                               <img src={rock} alt="Rock" className="img-fluid w-75"></img>
-                          </div>
+                             </div>
                           <div className="col g-0">
                               <img src={pop} alt="Pop" className="img-fluid w-75"></img>
                           </div>
