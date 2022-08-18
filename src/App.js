@@ -3,11 +3,8 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Reproductor from './components/componentes/player/audio.js';
 import FilterTableMusic from './components/componentes/admin/admin.js';
-import Playlist from './components/componentes/player/Playlist/Playlist';
-import HomeLogin from './components/componentes/player/HomeLogin/Homelogin';
-import Perfil from './components/componentes/perfil/perfil.js';
+import RouterPaths from './components/componentes/Router/Router';
 import Login from './components/js/login.js';
-
 const music = [
   {nombre:"track1/mp3"},
   {nombre:"track2/opus"},
