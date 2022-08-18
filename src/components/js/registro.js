@@ -41,6 +41,11 @@ class Registro extends Component {
         axios.post(`http://127.0.0.1:8000/api/registro`,request).then(res => {
                 console.log(res);
                 console.log(res.data);
+                if(res.data.status){
+                    alert("Registro con exito")
+                }else{
+                    alert("Ups! Algo está incorrecto")
+                }
             })
     }
 
