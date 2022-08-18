@@ -16,9 +16,18 @@ class Inicio extends Component {
     render() {
         return ( 
         <div className="overflow bg-grey">
-            {/* Nav */}
+            {/* NavInicio */}
             <div className="container-fluid">
-                <div className="row bg-black p-3 text-white">Navbar</div>
+                <div className="row bg-black p-3 text-white ">
+                    <div className="col text-start"><img src={logo} alt="H-Music" className="img-fluid " width={100}></img></div>
+
+                    <div className="col text-end"> 
+                        <button  className="btn btn-light btn-sm rounded-pill px-3 me-3" type="button">Registrarme</button>
+                        
+                        <button  className="btn btn-primary btn-sm rounded-pill px-3" type="button">Iniciar sesion</button>
+                    </div>
+
+                </div>
             </div>
 
             {/* Inicio */}
