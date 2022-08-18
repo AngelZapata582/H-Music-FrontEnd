@@ -6,11 +6,16 @@ import logo from '../../../img/logo.png';
 import user from '../../../img/user.png';
 
 const Playlist =() => {
-    const [posts, setposts] = useState();
+    const [canciones, setcanciones] = useState();
+    const config ={
+        headers: { Authorization: `Bearer 1|wn6YG2renae4qrTdSrXnE41taLshj9tffGkMmyfV` }
+    }
+
     useEffect(()=>{
-        axios.get('https://jsonplaceholder.typicode.com/todos').then((res) => {
+
+        axios.get('http://127.0.0.1:8000/api/cancion/genero/4',config).then((res) => { //4 es el id del genero de las canciones
             console.log(res.data);
-            setposts(res.data);
+            setcanciones(res.data.canciones);
         });
     },[]);
     return (
@@ -30,28 +35,27 @@ const Playlist =() => {
           </div>
 
 
-            <div class="Container">{
-                !posts ? ("No se encontraron datos"):(
+            <div className="Container">{
+                !canciones ? ("No se encontraron canciones"):(
                     
-                    <table class="Table">
+                    <table className="Table">
                             <thead>
-                                <div class="line"></div>
-                                <tr class="Head">
+                                <div className="line"></div>
+                                <tr className="Head">
                                 <th>#</th>
                                 <th>Titulo</th>
                                 <th>Artista</th>
-                                <th>Colaboraciones</th>
                                 <th>Duración</th>
                                 </tr> 
                             </thead>
                             <tbody>
                             {
-                                posts.map((post, index) => (
-                                    <tr key={index} class="Info">
-                                    <td>{post.id}</td>
-                                    <td>{post.userId}</td>
-                                    <td>{post.title}</td>
-                                    <td>{post.completed}</td>
+                                canciones.map((cancion, index) => (
+                                    <tr key={index} className="Info">
+                                    <td>{index}</td>
+                                    <td>{cancion.Nombre}</td>
+                                    <td>{cancion.Autor}</td>
+                                    <td>{cancion.Duracion}</td>
                                     </tr>
                                 ))}
                             </tbody>
