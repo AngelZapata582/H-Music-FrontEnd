@@ -49,6 +49,8 @@ class Registro extends Component {
             })
     }
 
+    
+
   render() {
     return (
       <div>
