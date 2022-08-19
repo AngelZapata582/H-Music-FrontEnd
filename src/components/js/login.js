@@ -2,12 +2,21 @@ import React, { Component } from "react"
 import '../css/login.css';
 import logo from '../img/logo.png';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
 
 
 class Login extends Component {
+
+
+    
     state = {
         email: '',
         password: '',
+        cookies: null,
+    }
+    constructor(){
+        super(); 
+        this.state.cookies = new Cookies();
     }
 
 
@@ -36,6 +45,9 @@ class Login extends Component {
                 console.log(res);
                 console.log(res.data);
                 if(res.data.status){
+                    this.state.cookies.set('token', res.data.token);
+                    console.log("Token de las cookies")
+                    console.log(this.state.cookies.get('token'))
                     alert("Bienvenido a H-Music")
                 }else{
                     alert("Ups! Algo está incorrecto")
@@ -58,12 +70,12 @@ class Login extends Component {
           <div className="col-lg-5 px-5 letras">
               <form onSubmit={this.handleSubmit}>
                   <div className="mb-3 text-start">
-                      <label for="exampleInputEmail1" className="form-label py-2">Ingrese su correo:</label>
+                      <label  className="form-label py-2">Ingrese su correo:</label>
                       <input type="email" name="email" onChange={this.handleChangeEmail} className="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp" />
 
                   </div>
                   <div className="mb-3 text-start ">
-                      <label for="exampleInputPassword1" className="form-label py-2">Ingrese su contraseña:</label>
+                      <label  className="form-label py-2">Ingrese su contraseña:</label>
                       <input type="password" name="password" onChange={this.handleChangeContraseña} className="form-control rounded-pill" id="exampleInputPassword1"/>
                   </div>
 
@@ -72,7 +84,7 @@ class Login extends Component {
 
                   </div>
                   <div className="text">
-                    <a href="#" class="card-link">Registrarme</a>
+                    <a href="#" className="card-link">Registrarme</a>
                     </div>
               </form>
           </div>
