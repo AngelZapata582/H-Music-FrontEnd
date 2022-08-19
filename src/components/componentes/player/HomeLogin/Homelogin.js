@@ -9,8 +9,12 @@ import rock from '../../../img/rock.png';
 import clasica from '../../../img/clasica.png';
 import cumbia from '../../../img/cumbia.png';
 
+
     //Funciones de carrusel 
     function IndividualIntervalsExample() {
+      
+
+
       const reviews = [
         { _id: 1, text: "abc" },
         { _id: 2, text: "def" },
@@ -44,7 +48,7 @@ import cumbia from '../../../img/cumbia.png';
                   <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
                     Juanvazquez
                     </button>
-                  <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button">Cerrar sesion</button>
+                  <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button" >Cerrar sesion</button>
                 </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ export default class RouterPaths extends React.Component{
         return (
             <Router forceRefresh={true}>
                 <Routes>
-                    <Route exact path="/perfil/:id" element={<Perfil/>}/>
+                    <Route exact path="/perfil" element={<Perfil/>}/>
                     <Route exact path="/" element={<Inicio/>}/>
                     <Route exact path="/inicio" element={<HomeLogin/>}/>
                     <Route exact path="/admin" element={<FilterTableMusic/>}/>

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import './perfil.css';
 import user from '../../img/user.png';
 import p1 from '../../img/p1.png';
@@ -7,10 +7,12 @@ import p3 from '../../img/p3.png';
 import logo from '../../img/logo.png';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import Cookies from 'universal-cookie';
+import cerrarSesion from '../../js/redirect.js';
+import { Link } from "react-router-dom";
+
 
 import Form from 'react-bootstrap/Form';
-
-
 class Perfil extends React.Component {
 /* Modificando la pantalla de inicio */
     state = {
@@ -19,23 +21,33 @@ class Perfil extends React.Component {
         email:'',
         playlists:[],
         isload: false,
-        imgs:['/static/media/p1.ac31914728d59a498226.png','/static/media/p2.fcdd856bb8fcc2933517.png','/static/media/p3.c8aed91d16e4d860de9a.png']
+        imgs:['/static/media/p1.ac31914728d59a498226.png','/static/media/p2.fcdd856bb8fcc2933517.png','/static/media/p3.c8aed91d16e4d860de9a.png'],
+        cookies: null,
+        config:{},
     };
+
 
     constructor(props) {
         super(props)
-        axios.get(`http://127.0.0.1:8000/api/playlist`,this.config)
-        .then(res => {
-            console.log(res.data)
-            this.state.playlists = res.data.playlists
-            console.log(this.state.playlists)
-        }) 
-        
+        this.state.cookies = new Cookies();
+        this.state.config = {
+            headers: { Authorization: 'Bearer '+this.state.cookies.get('token') }
+        }
+        console.log("token cookie") 
+        console.log(this.state.config)
     }
 
-    
-    config = {
-        headers: { Authorization: `Bearer 1|htfU9dgEaeFQ5AF0bp73koeD0aKr7qREWB94pBLT` }
+    checkSesion = async event  =>{
+        await axios.get(`http://127.0.0.1:8000/api/check`,this.state.config)
+        .then(res => {
+            this.user.nombre = res.data.user.nombre
+            this.user.email = res.data.user.email
+        }).catch(error=>{
+            if(error.response.status == 401){
+                alert("Algo salio mal, vuelve a iniciar sesion")
+                cerrarSesion()
+            }
+        });
     }
 
     user = {
@@ -44,13 +56,9 @@ class Perfil extends React.Component {
     }
 
     componentDidMount() {
+        this.checkSesion()
         this.get()
-        axios.get(`http://127.0.0.1:8000/api/check`,this.config)
-        .then(res => {
-            console.log(res.data)
-            this.user.nombre = res.data.user.nombre
-            this.user.email = res.data.user.email 
-        })
+        
     }
 
     
@@ -84,10 +92,16 @@ class Perfil extends React.Component {
         console.log(request)
         
     
-        axios.put(`http://127.0.0.1:8000/api/user`,request,this.config)
+        axios.put(`http://127.0.0.1:8000/api/user`,request,this.state.config)
             .then(res => {
                 console.log(res);
                 console.log(res.data);
+                if(res.data.status){
+                    alert("Usuario actualizado")
+                    //window.location.reload()
+                }else{
+                    alert("Algo salio mal")
+                }
             })
     }
 
@@ -100,16 +114,18 @@ class Perfil extends React.Component {
         this.setState({ show: false });
     };
 
-
     get = async event  =>{
-        const res = await axios.get(`http://127.0.0.1:8000/api/playlist`,this.config) 
+        const res = await axios.get(`http://127.0.0.1:8000/api/playlist`,this.state.config) 
         this.setState({
             playlists : res.data.playlists,
             isload: true
         })
     }
 
+    
+
     render() {
+        
         if(this.state.isload){
             const getPlaylists = () => {
                 console.log("iniciando for")
@@ -130,6 +146,8 @@ class Perfil extends React.Component {
                     )
                 })
             }
+
+            
     
     
             return ( /* position-relative */
@@ -137,13 +155,15 @@ class Perfil extends React.Component {
                 {/* Navbar User */}
                 <div className="container-fluid">
                             <div className="row bg-black p-3 text-white ">
-                            <div className="col text-start"><h5>H-Music</h5></div>
+                                    <div className="col text-start"><h5><a className="link" href="/">H-Music</a></h5></div>
                             <div className="col text-end"> 
-                            <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button">
-                            <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
-                                Juanvazquez
-                                </button>
-                            <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button">Cerrar sesion</button>
+                            <Link to="/perfil">
+                                <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button" >
+                                <img src={user} alt={this.user.nombre} className="g-0 pe-2 pb-1" width={25}></img>
+                                    {this.user.nombre}
+                                    </button>
+                            </Link>
+                            <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button" onClick={cerrarSesion} >Cerrar sesion</button>
                             </div>
                         </div>
                     </div>
@@ -156,13 +176,13 @@ class Perfil extends React.Component {
                         <div className="col-lg-4 bg-white align-self-center">
                             <div className="row ">
                                     <div className="col p-3">
-                                        <img src={user} alt="Juan vazquez" className="w-100 img-fluid"></img>
+                                        <img src={user} alt={this.user.nombre} className="w-100 img-fluid"></img>
                                     </div>
     
                                     <div className="col text-start p-4">
                                         <div className="row">
-                                            <h5 className="text-bold">Juan Vazquez</h5> 
-                                            <span className="">juanvazquez_jesuss@hotmail.com</span>
+                                            <h5 className="text-bold">{this.user.nombre}</h5> 
+                                            <span className="">{this.user.email}</span>
                                         </div>
                                     </div>
                             </div>
@@ -176,7 +196,7 @@ class Perfil extends React.Component {
     
                 <div className="container-fluid bg-black ">
                     <div className="row p-5">
-                            <h3 className="text-start text-bold text-white">Mis Playlists </h3>
+                            <h3 className="text-start text-bold text-white" href="/">Mis Playlists </h3>
                     </div>
     
                     {getPlaylists()}
@@ -192,7 +212,9 @@ class Perfil extends React.Component {
     
                     <div className="row p-5 pb-5 justifiy-content-center">
                         <div className="col">
+                        <Link to="/">
                             <img src={logo} alt="H-Music" className="img-fluid "></img>
+                        </Link>
                         </div>
                     </div>
                 </div>
@@ -228,13 +250,15 @@ class Perfil extends React.Component {
                     {/* Navbar User */}
                     <div className="container-fluid">
                             <div className="row bg-black p-3 text-white ">
-                            <div className="col text-start"><h5>H-Music</h5></div>
+                                    <div className="col text-start"><h5><a className="link" href="/">H-Music</a></h5></div>
                             <div className="col text-end"> 
-                            <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button">
-                            <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
-                                Juanvazquez
-                                </button>
-                            <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button">Cerrar sesion</button>
+                            <Link to="/perfil">
+                                <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button" >
+                                <img src={user} alt={this.user.nombre} className="g-0 pe-2 pb-1" width={25}></img>
+                                    {this.user.nombre}
+                                    </button>
+                            </Link>
+                            <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button" onClick={cerrarSesion} >Cerrar sesion</button>
                             </div>
                         </div>
                     </div>
@@ -248,13 +272,13 @@ class Perfil extends React.Component {
                         <div className="col-lg-4 bg-white align-self-center">
                             <div className="row ">
                                     <div className="col p-3">
-                                        <img src={user} alt="Juan vazquez" className="w-100 img-fluid"></img>
+                                        <img src={user} alt={this.user.nombre} className="w-100 img-fluid"></img>
                                     </div>
     
                                     <div className="col text-start p-4">
                                         <div className="row">
-                                            <h5 className="text-bold">Juan Vazquez</h5> 
-                                            <span className="">juanvazquez_jesuss@hotmail.com</span>
+                                            <h5 className="text-bold">{this.user.nombre}</h5> 
+                                            <span className="">{this.user.email}</span>
                                         </div>
                                     </div>
                             </div>
@@ -283,7 +307,9 @@ class Perfil extends React.Component {
     
                     <div className="row p-5 pb-5 justifiy-content-center">
                         <div className="col">
+                        <Link to="/">
                             <img src={logo} alt="H-Music" className="img-fluid "></img>
+                        </Link>
                         </div>
                     </div>
                 </div>
@@ -317,4 +343,10 @@ class Perfil extends React.Component {
     
     }
 }
+
+
 export default Perfil
+
+
+
+
