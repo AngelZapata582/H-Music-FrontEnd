@@ -62,7 +62,7 @@ class Login extends React.Component {
                         <img src={logo} alt="H-Music" className=""></img>
                     </div>
 
-                    <div className="line px-0"></div>
+         
 
                     <div className="col-lg-5 px-5 letras">
                         <form onSubmit={this.handleSubmit}>

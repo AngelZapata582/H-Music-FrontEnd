@@ -61,7 +61,7 @@ class Registro extends Component {
                 <img src={logo} alt="H-Music"></img>
             </div>
 
-            <div className="line px-0"></div>
+           
 
             <div className="col-lg-5 px-5 letras">
                 <form onSubmit={this.handleSubmit}>
