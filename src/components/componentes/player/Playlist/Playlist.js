@@ -4,11 +4,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Playlist.css';
 import logo from '../../../img/logo.png';
 import user from '../../../img/user.png';
-
+import { Link } from "react-router-dom";
 const Playlist =() => {
     const [canciones, setcanciones] = useState();
     const config ={
-        headers: { Authorization: `Bearer 1|wn6YG2renae4qrTdSrXnE41taLshj9tffGkMmyfV` }
+        headers: { Authorization: `Bearer 1|CcCmwoFPkrCbynLhv1mGL0UtidNNtwGYdpoH8s8r` }
     }
 
     useEffect(()=>{
@@ -25,10 +25,12 @@ const Playlist =() => {
                 <div className="row bg-black p-3 text-white ">
                 <div className="col text-start"><h5>H-Music</h5></div>
                 <div className="col text-end"> 
+                  <Link to="/perfil/1">
                   <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button">
                   <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
                     Juanvazquez
                     </button>
+                  </Link>
                   <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button">Cerrar sesion</button>
                 </div>
             </div>
