@@ -42,13 +42,14 @@ class Login extends Component {
         };
 
         axios.post(`http://127.0.0.1:8000/api/login`,request).then(res => {
-                console.log(res);
-                console.log(res.data);
+
                 if(res.data.status){
                     this.state.cookies.set('token', res.data.token);
-                    console.log("Token de las cookies")
-                    console.log(this.state.cookies.get('token'))
+                    this.state.cookies.set('user', res.data.user.nombre);
+                    this.state.cookies.set('email', res.data.user.email);
+                    
                     alert("Bienvenido a H-Music")
+                    window.location.href= "/inicio"
                 }else{
                     alert("Ups! Algo está incorrecto")
                 }
@@ -84,7 +85,7 @@ class Login extends Component {
 
                   </div>
                   <div className="text">
-                    <a href="#" className="card-link">Registrarme</a>
+                    <a href="/registro" className="card-link">Registrarme</a>
                     </div>
               </form>
           </div>

@@ -20,6 +20,7 @@ import Cumbia2 from '../../../img/Cumbia2.png';
 import Cumbia3 from '../../../img/Cumbia3.png';
 import Cumbia4 from '../../../img/Cumbia4.png';
 
+
     //Funciones de carrusel 
     function IndividualIntervalsExample() {
       return (
@@ -33,7 +34,7 @@ import Cumbia4 from '../../../img/Cumbia4.png';
                   <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
                     Juanvazquez
                     </button>
-                  <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button">Cerrar sesion</button>
+                  <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button" >Cerrar sesion</button>
                 </div>
             </div>
           </div>
