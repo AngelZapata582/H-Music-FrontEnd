@@ -223,7 +223,7 @@ class Reproductor extends Component {
                   <button type="button" id="prev" className="btn_np" onClick={this._handlePrevMusic}  width="10%" height="10%">
                     <img src={require("../../icons/previous.png")} alt="anterior" width="45%" height="45%" />
                   </button>
-                  <button onClick={this._handleToggle} className="btn_player" width="20%" height="20%">
+                  <button type="button" onClick={this._handleToggle} className="btn_player_audio" width="20%" height="20%">
                     {btn}
                   </button>
                   <button type="button" id="next" className="btn_np" onClick={this._handleNextMusic} width="10%" height="10%">

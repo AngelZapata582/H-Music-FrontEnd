@@ -8,20 +8,40 @@ import Perfil from "../perfil/perfil.js";
 import NotFound from "../notfound/NotFound.js"
 import Playlist from "../player/Playlist/Playlist.js";
 import HomeLogin from "../player/HomeLogin/Homelogin.js";
-
+import Cookies from 'universal-cookie';
 export default class RouterPaths extends React.Component{
+    state = {
+        cookie:null
+    }
+    constructor(){
+        super()
+        this.cookies = new Cookies();
+    }
     render(){
         return (
             <Router forceRefresh={true}>
                 <Routes>
-                    <Route exact path="/perfil" element={<Perfil/>}/>
-                    <Route exact path="/" element={<Inicio/>}/>
-                    <Route exact path="/inicio" element={<HomeLogin/>}/>
-                    <Route exact path="/admin" element={<FilterTableMusic/>}/>
-                    <Route path="*" element={<NotFound/>}/>
+                    {this.cookies.get('token') ? (
+                        <Route exact path="/admin" element={<FilterTableMusic/>}/>
+                    ):(() => window.location.href = "/login")}
+                    
+                    {this.cookies.get('token') ? (
+                        <Route exact path="/perfil" element={<Perfil/>}/>
+                    ):(() => window.location.href = "/login")}
+                    
+                    {this.cookies.get('token') ? (
+                        <Route exact path="/playlist" element={<Playlist/>}/>
+                    ):(() => window.location.href = "/login")}
+
+                    
+                    {this.cookies.get('token') ? (
+                        <Route exact path="/inicio" element={<HomeLogin/>}/>
+                    ):(() => window.location.href = "/login")}
+                    
                     <Route exact path="/login" element={<Login/>}/>
                     <Route exact path="/registro" element={<Registro/>}/>
-                    <Route exact path="/playlist" element={<Playlist/>}/>
+                    <Route path="*" element={<NotFound/>}/>
+                    <Route exact path="/" element={<Inicio/>}/>
                 </Routes>
             </Router>
         )

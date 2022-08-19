@@ -62,10 +62,15 @@ const Playlist = () => {
 
                     <div>
                         <div className="container">
-                        <div className="play m-4">
+                        <div class="row">
+                        <div className="play m-4 col-5">
                             <button className="btn_player" width="20%" height="20%" onClick={() =>{ _handleGetPlayer();console.log(call)}}>
                                 <img src={tocar} width="45%" height="45%" />
                             </button>
+                        </div>
+                        <div class="col-5 m-4">
+                            <p class="text-light"> {canciones.length} canciones en esta playlist </p>
+                        </div>
                         </div>
                         <table className="Table">
                             <thead>
