@@ -1,23 +1,27 @@
 import React, {Component} from "react";
 import './HomeLogin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Stack, Carousel, Card, Button} from 'react-bootstrap';
 import logo from '../../../img/logo.png';
 import user from '../../../img/user.png';
 import pop from '../../../img/pop.png';
 import rock from '../../../img/rock.png';
 import clasica from '../../../img/clasica.png';
 import cumbia from '../../../img/cumbia.png';
+import Rock1 from '../../../img/Rock1.png';
+import Pop1 from '../../../img/Pop1.png';
+import Pop2 from '../../../img/Pop2.png';
+import Pop4 from '../../../img/Pop4.png';
+import Clasic1 from '../../../img/Clasic1.png';
+import Clasic2 from '../../../img/Clasic2.png';
+import Clasic3 from '../../../img/Clasic3.png';
+import Clasic4 from '../../../img/Clasic4.png';
+import Cumbia1 from '../../../img/Cumbia1.png';
+import Cumbia2 from '../../../img/Cumbia2.png';
+import Cumbia3 from '../../../img/Cumbia3.png';
+import Cumbia4 from '../../../img/Cumbia4.png';
 
     //Funciones de carrusel 
     function IndividualIntervalsExample() {
-      const reviews = [
-        { _id: 1, text: "abc" },
-        ];
-      const reviews2 = [
-        { _id: 1, text: "abc" },
-        { _id: 2, text: "abc" },
-        ];
       return (
         <div className="overflow bg-black">
           {/* Navbar User */}
@@ -33,84 +37,92 @@ import cumbia from '../../../img/cumbia.png';
                 </div>
             </div>
           </div>
-        //carrusel
+        
+
+
+        <div className="Text1">
+        <h5>Encuentra lo mejor del genero:</h5>
+        </div>
+        <div className="Text11">
+        <h4>POP</h4>
+        </div>
+        <div className="Card1">
         <div class="row">
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+      <img src={Rock1} class="img-fluid rounded-start"></img>
+      <h4 className="art1">Manu</h4>
   </div>
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+      <img src={Pop1} height="322px" width="210px"></img>
+      <h4 className="art2">HAASH</h4>
   </div>
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+      <img src={Pop2} height="322px" width="210px"></img>
+      <h4 className="art3">Morat</h4>
+    
   </div>
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+      <img src={Pop4} height="324px" width="210px"></img>
+      <h5 className="art4">Manu Medrano</h5>
+  </div>
   </div>
 </div>
-//carrusel 2
-<div class="row">
+
+<div className="Text2">
+        <h5>Encuentra lo mejor del genero:</h5>
+        </div>
+        <div className="Text22">
+        <h4>Clasica</h4>
+        </div>
+<div className="Card2">
+        <div class="row">
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+      <img src={Clasic1} height="322px" width="210px"></img>
+      <h5 className="art5">Jose Jose</h5>
       </div>
-    </div>
+  <div class="col-sm-3">
+      <img src={Clasic2} height="322px" width="210px"></img>
+      <h5 className="art6">Juan Gabriel</h5>
   </div>
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+      <img src={Clasic3} height="322px" width="210px"></img>
+      <h5 className="art7">Amanda Miguel</h5>
   </div>
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+      <img src={Clasic4} height="322px" width="210px"></img>
+      <h5 className="art8">Wihtney Houston</h5>
+  </div>
+  </div>
+  </div>
+
+  <div className="Text4">
+        <h5>Encuentra lo mejor del genero:</h5>
+        </div>
+        <div className="Text44">
+        <h4>Cumbia</h4>
+        </div>
+
+<div className="Card2">
+        <div class="row">
+  <div class="col-sm-3">
+      <img src={Cumbia1} height="322px" width="210px"></img>
+      <h5 className="art9">Apache</h5>
   </div>
   <div class="col-sm-3">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
+      <img src={Cumbia2} height="322px" width="210px"></img>
+      <h5 className="art10">Angeles Azules</h5>
   </div>
-</div>
+  <div class="col-sm-3">
+      <img src={Cumbia3} height="322px" width="210px"></img>
+      <h5 className="art11">Celso Piña</h5>
+  </div>
+  <div class="col-sm-3">
+      <img src={Cumbia4} height="322px" width="210px"></img>
+      <h5 className="art12">Chicos de Barrio</h5>
+  </div>
+  </div>
+  </div>
+
          <div className="container-fluid bg-black ">
             <div className="row p-5">
               <h3 className="text-start text-bold text-white">Categorias</h3>
