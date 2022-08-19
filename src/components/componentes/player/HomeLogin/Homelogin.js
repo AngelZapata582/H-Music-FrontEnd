@@ -13,26 +13,11 @@ import cumbia from '../../../img/cumbia.png';
     function IndividualIntervalsExample() {
       const reviews = [
         { _id: 1, text: "abc" },
-        { _id: 2, text: "def" },
-        { _id: 3, text: "ghi" },
-        { _id: 4, text: "jkl" },
-        { _id: 5, text: "mno" },
-        { _id: 6, text: "pqr" },
-        { _id: 7, text: "stu" },
-        { _id: 8, text: "vwx" },
-        { _id: 9, text: "yza" }
-      ];
+        ];
       const reviews2 = [
         { _id: 1, text: "abc" },
-        { _id: 2, text: "def" },
-        { _id: 3, text: "ghi" },
-        { _id: 4, text: "jkl" },
-        { _id: 5, text: "mno" },
-        { _id: 6, text: "pqr" },
-        { _id: 7, text: "stu" },
-        { _id: 8, text: "vwx" },
-        { _id: 9, text: "yza" }
-      ];
+        { _id: 2, text: "abc" },
+        ];
       return (
         <div className="overflow bg-black">
           {/* Navbar User */}
@@ -48,146 +33,85 @@ import cumbia from '../../../img/cumbia.png';
                 </div>
             </div>
           </div>
-        
-        //carrusel 1
-        <div>
-      <div className="bg-dark bg-opacity-25 container-fluid">
-        <Carousel style={{ height: 500 }}>
-          {reviews.map((review, index) => (
-            <Carousel.Item style={{ height: 500 }}>
-              <Stack
-                direction="horizontal"
-                className="h-100 justify-content-center align-items-center"
-                gap={9}
-              >
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={rock}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={pop}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                  <img src={clasica}></img>
-                    </Card.Body>
-                </Card>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={rock}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={pop}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                  <img src={clasica}></img>
-                    </Card.Body>
-                </Card>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={rock}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={pop}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                  <img src={clasica}></img>
-                    </Card.Body>
-                </Card>
-              </Stack>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+        //carrusel
+        <div class="row">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
-          //Cierre de carrusel 1
-          //carrusel 2
-        <div>
-      <div className="bg-dark bg-opacity-25 container-fluid">
-        <Carousel style={{ height: 500 }}>
-          {reviews2.map((review, index) => (
-            <Carousel.Item style={{ height: 500 }}>
-              <Stack
-                direction="horizontal"
-                className="h-100 justify-content-center align-items-center"
-                gap={9}
-              >
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={rock}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={pop}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                  <img src={clasica}></img>
-                    </Card.Body>
-                </Card>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={rock}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={pop}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                  <img src={clasica}></img>
-                    </Card.Body>
-                </Card>
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={rock}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                    <img src={pop}></img>
-                  </Card.Body>
-                </Card>
-
-                <Card style={{ width: "18rem" }}>
-                  <Card.Body>
-                  <img src={clasica}></img>
-                    </Card.Body>
-                </Card>
-              </Stack>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
       </div>
     </div>
-          //Cierre de carrusel 2
-          <div className="container-fluid bg-black ">
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+//carrusel 2
+<div class="row">
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div>
+         <div className="container-fluid bg-black ">
             <div className="row p-5">
               <h3 className="text-start text-bold text-white">Categorias</h3>
             </div>

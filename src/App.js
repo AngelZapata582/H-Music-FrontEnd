@@ -5,6 +5,7 @@ import Reproductor from './components/componentes/player/audio.js';
 import FilterTableMusic from './components/componentes/admin/admin.js';
 import RouterPaths from './components/componentes/Router/Router';
 import Login from './components/js/login.js';
+import HomeLogin from './components/componentes/player/HomeLogin/Homelogin.js';
 const music = [
   {nombre:"track1/mp3"},
   {nombre:"track2/opus"},
@@ -15,7 +16,7 @@ const music = [
 function App() {
   return (
     <div className="App">
-      <Login/>
+      <HomeLogin/>
       {/* <Reproductor music={music}/>
       <RouterPaths/> */}
     </div>
