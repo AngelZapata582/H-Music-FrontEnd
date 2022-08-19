@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './Playlist.css';
 import logo from '../../../img/logo.png';
 import user from '../../../img/user.png';
+
+import tocar from '../../../icons/tocar.png';
 import { Link } from "react-router-dom";
 const Playlist =() => {
     const [canciones, setcanciones] = useState();
@@ -35,8 +37,12 @@ const Playlist =() => {
                 </div>
             </div>
           </div>
-
-
+        
+        <div className="play">
+        <button className="btn_player" width="20%" height="20%" >   
+        <img src={tocar} width="45%" height="45%" />  
+                </button>
+                </div>
             <div className="Container">{
                 !canciones ? ("No se encontraron canciones"):(
                     
