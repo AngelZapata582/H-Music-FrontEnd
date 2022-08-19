@@ -30,7 +30,7 @@ export default class RouterPaths extends React.Component{
                     ):(() => window.location.href = "/login")}
                     
                     {this.cookies.get('token') ? (
-                        <Route exact path="/playlist" element={<Playlist/>}/>
+                        <Route exact path="/playlist/:id" element={<Playlist/>}/>
                     ):(() => window.location.href = "/login")}
 
                     

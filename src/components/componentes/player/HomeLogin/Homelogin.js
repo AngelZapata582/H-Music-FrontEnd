@@ -162,7 +162,11 @@ class HomeLogin extends React.Component{
                               <img src={clasica} alt="Clasica" className="img-fluid w-75 "></img>
                           </div>
                           <div className="col g-0">
-                              <img src={cumbia} alt="Cumbia" className="img-fluid w-75 "></img>
+                          <Link to={{
+                            pathname: '/playlist',
+                            id: [{id: 1}]
+                            }}> <img src={cumbia} alt="Cumbia" className="img-fluid w-75 "></img> </Link>
+                              
                           </div>
               </div>
           </div>
