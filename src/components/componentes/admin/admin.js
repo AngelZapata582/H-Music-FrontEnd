@@ -8,6 +8,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
+import Cookies from 'universal-cookie';
+
 class FilterTableMusic extends React.Component {
   state = {
     tokencsrf:"",
@@ -25,6 +27,7 @@ class FilterTableMusic extends React.Component {
     Musica: "",
     Generos: [],
     action: "",
+    cookie: null,
   };
 
   constructor(props) {
@@ -47,6 +50,9 @@ class FilterTableMusic extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({
+      cookie:new Cookies()
+    })
     this.getMusicList()
     this.getGeneros()
   }
@@ -91,7 +97,7 @@ class FilterTableMusic extends React.Component {
 
   getMusicList = async event => {
     console.log("musicas")
-    const res = await axios.get('http://localhost:8000/api/music/all')
+    const res = await axios.get('http://localhost:8000/api/musics')
     this.setState({
       songs: res.data,
       isloaded: true
@@ -150,7 +156,7 @@ class FilterTableMusic extends React.Component {
         Musica: this.state.Musica,
       }
       axios.put("http://localhost:8000/api/cancion/"+music.id,music,
-      { headers: {"Authorization" : "Bearer 1|CcCmwoFPkrCbynLhv1mGL0UtidNNtwGYdpoH8s8r"} })
+      { headers: {"Authorization" : "Bearer " + this.state.cookie.get("token")} })
       .then(res => {
         console.log(res)
         this.getMusicList()
@@ -169,7 +175,7 @@ class FilterTableMusic extends React.Component {
         Musica: this.state.Musica,
       }
       axios.post("http://localhost:8000/api/cancion",music,
-      { headers: {"Authorization" : "Bearer 1|CcCmwoFPkrCbynLhv1mGL0UtidNNtwGYdpoH8s8r"} })
+      { headers: {"Authorization" : "Bearer " + this.state.cookie.get("token")} })
       .then(res => {
         console.log(res)
         this.getMusicList()
@@ -249,7 +255,7 @@ class FilterTableMusic extends React.Component {
         })
       }
       return (
-        <div className="bg">
+        <div className="bg p-4">
           <Container>
             <Row>
               <Col md={2}>

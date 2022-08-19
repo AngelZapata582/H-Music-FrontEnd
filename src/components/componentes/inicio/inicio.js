@@ -10,6 +10,7 @@ import categoria3 from '../../img/categoria3.png';
 import categoria4 from '../../img/categoria4.png';
 import categoria2sm from '../../img/categoria2sm.png';
 import logo from '../../img/logo.png';
+import { Link } from "react-router-dom";
 
 class Inicio extends Component {
 /* Modificando la pantalla de inicio */
@@ -22,9 +23,10 @@ class Inicio extends Component {
                     <div className="col text-start"><img src={logo} alt="H-Music" className="img-fluid " width={100}></img></div>
 
                     <div className="col text-end"> 
-                        <button  className="btn btn-light btn-sm rounded-pill px-3 me-3" type="button">Registrarme</button>
                         
-                        <button  className="btn btn-primary btn-sm rounded-pill px-3" type="button">Iniciar sesion</button>
+                        <Link to="/registro"><button  className="btn btn-light btn-sm rounded-pill px-3 me-3" type="button">Registrarme</button></Link>
+                        <Link to="/login"><button  className="btn btn-primary btn-sm rounded-pill px-3" type="button">Iniciar sesion</button></Link>
+                        
                     </div>
 
                 </div>
@@ -208,18 +210,20 @@ class Inicio extends Component {
             <br/>
             {/* Footer */}
             <div className="container-fluid justifiy-content-center bg-black">
-                <div className="row pt-5">
-                    <div className="col-lg-5 col-md-4 col-sm-12">
-                        <div className="line"></div>
+                    <div className="row pt-5">
+                        <div className="col-lg-5 col-md-4 col-sm-12">
+                            <div className="line"></div>
+                        </div>
+                    </div>
+    
+                    <div className="row p-5 pb-5 justifiy-content-center">
+                        <div className="col">
+                        <Link to="/">
+                            <img src={logo} alt="H-Music" className="img-fluid "></img>
+                        </Link>
+                        </div>
                     </div>
                 </div>
-
-                <div className="row p-5 pb-5 justifiy-content-center">
-                    <div className="col">
-                        <img src={logo} alt="H-Music" className="img-fluid "></img>
-                    </div>
-                </div>
-            </div>
         </div>        
         )
     }

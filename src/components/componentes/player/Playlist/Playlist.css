@@ -31,3 +31,12 @@
 .overflow{
     overflow-x: hidden;
 }
+.btn_player {
+    border-radius: 100%;
+    width: 4rem;
+    height: 4rem;
+    background-color: #E5E5E5;
+    border: 0px;
+    margin-inline: 1rem;
+    
+}

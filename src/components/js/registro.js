@@ -43,6 +43,7 @@ class Registro extends Component {
                 console.log(res.data);
                 if(res.data.status){
                     alert("Registro con exito")
+                    window.location.href= "/login"
                 }else{
                     alert("Ups! Algo está incorrecto")
                 }
@@ -88,7 +89,7 @@ class Registro extends Component {
                     </div>
 
                     <div className="text">
-                    <a href="#" class="card-link">Iniciar Sesión</a>
+                    <a href="/login" class="card-link">Iniciar Sesión</a>
                     </div>
                 </form>
             </div>
