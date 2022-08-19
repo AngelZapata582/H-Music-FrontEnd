@@ -33,30 +33,17 @@ class Perfil extends React.Component {
         this.state.config = {
             headers: { Authorization: 'Bearer '+this.state.cookies.get('token') }
         }
-        console.log("token cookie") 
-        console.log(this.state.config)
-    }
 
-    checkSesion = async event  =>{
-        await axios.get(`http://127.0.0.1:8000/api/check`,this.state.config)
-        .then(res => {
-            this.user.nombre = res.data.user.nombre
-            this.user.email = res.data.user.email
-        }).catch(error=>{
-            if(error.response.status == 401){
-                alert("Algo salio mal, vuelve a iniciar sesion")
-                cerrarSesion()
-            }
-        });
+        this.user.nombre = this.state.cookies.get('user')
+        this.user.email = this.state.cookies.get('email')
     }
 
     user = {
         nombre:'',
-        email:'' 
+        email:''
     }
 
     componentDidMount() {
-        this.checkSesion()
         this.get()
         
     }
@@ -88,17 +75,19 @@ class Perfil extends React.Component {
             nombre: this.state.name,
             email: this.state.email
         };
-        console.log("Request")
-        console.log(request)
+
         
     
         axios.put(`http://127.0.0.1:8000/api/user`,request,this.state.config)
             .then(res => {
-                console.log(res);
-                console.log(res.data);
+
                 if(res.data.status){
+                    this.state.cookies.remove('user')
+                    this.state.cookies.remove('email')
+                    this.state.cookies.set('user', res.data.user.nombre);
+                    this.state.cookies.set('email', res.data.user.email);
                     alert("Usuario actualizado")
-                    //window.location.reload()
+                    window.location.href ="/perfil"
                 }else{
                     alert("Algo salio mal")
                 }
@@ -128,7 +117,7 @@ class Perfil extends React.Component {
         
         if(this.state.isload){
             const getPlaylists = () => {
-                console.log("iniciando for")
+                
                 return this.state.playlists.map((data) => {
                     var img = this.state.imgs[Math.floor(Math.random()*this.state.imgs.length)]
                     return (
@@ -155,7 +144,7 @@ class Perfil extends React.Component {
                 {/* Navbar User */}
                 <div className="container-fluid">
                             <div className="row bg-black p-3 text-white ">
-                                    <div className="col text-start"><h5><a className="link" href="/">H-Music</a></h5></div>
+                                    <div className="col text-start"><h5><a className="link" href="/inicio">H-Music</a></h5></div>
                             <div className="col text-end"> 
                             <Link to="/perfil">
                                 <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button" >
@@ -250,7 +239,7 @@ class Perfil extends React.Component {
                     {/* Navbar User */}
                     <div className="container-fluid">
                             <div className="row bg-black p-3 text-white ">
-                                    <div className="col text-start"><h5><a className="link" href="/">H-Music</a></h5></div>
+                                    <div className="col text-start"><h5><a className="link" href="/inicio">H-Music</a></h5></div>
                             <div className="col text-end"> 
                             <Link to="/perfil">
                                 <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button" >

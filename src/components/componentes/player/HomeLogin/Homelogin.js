@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import './HomeLogin.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from '../../../img/logo.png';
@@ -19,29 +19,48 @@ import Cumbia1 from '../../../img/Cumbia1.png';
 import Cumbia2 from '../../../img/Cumbia2.png';
 import Cumbia3 from '../../../img/Cumbia3.png';
 import Cumbia4 from '../../../img/Cumbia4.png';
+import cerrarSesion from '../../../js/redirect.js';
+import Cookies from 'universal-cookie';
+import { Link } from "react-router-dom";
 
+    //Funciones de carrusel
 
-    //Funciones de carrusel 
-    function IndividualIntervalsExample() {
-      return (
-        <div className="overflow bg-black">
-          {/* Navbar User */}
-          <div className="container-fluid">
-                <div className="row bg-black p-3 text-white ">
-                <div className="col text-start"><h5>H-Music</h5></div>
-                <div className="col text-end"> 
-                  <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button">
-                  <img src={user} alt="juanvazquez" className="g-0 pe-2 pb-1" width={25}></img>
-                    Juanvazquez
-                    </button>
-                  <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button" >Cerrar sesion</button>
-                </div>
-            </div>
-          </div>
-        
+class HomeLogin extends React.Component{
+  state={
+    cookies:null
+  }
+  constructor(){
+    super();
+    this.state.cookies = new Cookies();
+    this.user.nombre = this.state.cookies.get('user')
+    this.user.email = this.state.cookies.get('email')
+  }
 
+  user = {
+    nombre:'',
+    email:''
+  }
 
-        <div className="Text1">
+  render(){
+    return (
+      <div className="overflow bg-black">
+       {/* Navbar User */}
+       <div className="container-fluid">
+                            <div className="row bg-black p-3 text-white ">
+                                    <div className="col text-start"><h5><a className="link" href="/inicio">H-Music</a></h5></div>
+                            <div className="col text-end"> 
+                            <Link to="/perfil">
+                                <button  className="btn btn-primary btn-sm rounded-pill px-3 me-3" type="button" >
+                                <img src={user} alt={this.user.nombre} className="g-0 pe-2 pb-1" width={25}></img>
+                                    {this.user.nombre}
+                                    </button>
+                            </Link>
+                            <button  className="btn  btn-light btn-sm rounded-pill px-3" type="button" onClick={cerrarSesion} >Cerrar sesion</button>
+                            </div>
+                        </div>
+                    </div>
+      
+                    <div className="Text1">
         <h5>Encuentra lo mejor del genero:</h5>
         </div>
         <div className="Text11">
@@ -164,9 +183,8 @@ import Cumbia4 from '../../../img/Cumbia4.png';
             </div>
 
         </div>
-        );
-    }
+      );
+  }
+}
 
-
-
-export default IndividualIntervalsExample
+export default HomeLogin

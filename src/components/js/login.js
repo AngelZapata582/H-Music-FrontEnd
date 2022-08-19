@@ -5,10 +5,8 @@ import axios from 'axios';
 import Cookies from 'universal-cookie';
 
 
-class Login extends Component {
+class Login extends React.Component {
 
-
-    
     state = {
         email: '',
         password: '',
@@ -18,8 +16,6 @@ class Login extends Component {
         super(); 
         this.state.cookies = new Cookies();
     }
-
-
 
     handleChangeEmail = event => {
         this.setState({ 
@@ -59,39 +55,36 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-          <div className="container-fluid bg">
-      <div className="row align-items-center vh-100">
-          <div className="col-lg-6">
-              <img src={logo} alt="H-Music" className=""></img>
-          </div>
-
-          <div className="line px-0"></div>
-
-          <div className="col-lg-5 px-5 letras">
-              <form onSubmit={this.handleSubmit}>
-                  <div className="mb-3 text-start">
-                      <label  className="form-label py-2">Ingrese su correo:</label>
-                      <input type="email" name="email" onChange={this.handleChangeEmail} className="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp" />
-
-                  </div>
-                  <div className="mb-3 text-start ">
-                      <label  className="form-label py-2">Ingrese su contraseña:</label>
-                      <input type="password" name="password" onChange={this.handleChangeContraseña} className="form-control rounded-pill" id="exampleInputPassword1"/>
-                  </div>
-
-                  <div className="d-grid gap-2 col-6 mx-auto py-2">
-                  <button type="submit" className="btn btn-primary text-center rounded-pill">Iniciar</button>
-
-                  </div>
-                  <div className="text">
-                    <a href="/registro" className="card-link">Registrarme</a>
+        <div>
+            <div className="container-fluid bg">
+                <div className="row align-items-center vh-100">
+                    <div className="col-lg-6">
+                        <img src={logo} alt="H-Music" className=""></img>
                     </div>
-              </form>
-          </div>
-      </div>
-         </div>
-  </div>
+
+                    <div className="line px-0"></div>
+
+                    <div className="col-lg-5 px-5 letras">
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="mb-3 text-start">
+                                <label for="exampleInputEmail1" className="form-label py-2">Ingrese su correo:</label>
+                                <input type="email" name="email" onChange={this.handleChangeEmail} className="form-control rounded-pill" id="exampleInputEmail1" aria-describedby="emailHelp" />
+
+                            </div>
+                            <div className="mb-3 text-start ">
+                                <label for="exampleInputPassword1" className="form-label py-2">Ingrese su contraseña:</label>
+                                <input type="password" name="password" onChange={this.handleChangeContraseña} className="form-control rounded-pill" id="exampleInputPassword1"/>
+                            </div>
+
+                            <div className="d-grid gap-2 col-6 mx-auto py-2">
+                            <button type="submit" className="btn btn-primary text-center rounded-pill">Iniciar</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     )
   }
 }
