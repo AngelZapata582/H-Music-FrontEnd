@@ -91,7 +91,7 @@ class FilterTableMusic extends React.Component {
 
   getMusicList = async event => {
     console.log("musicas")
-    const res = await axios.get('http://localhost:8000/api/music/all')
+    const res = await axios.get('http://localhost:8000/api/musics')
     this.setState({
       songs: res.data,
       isloaded: true
