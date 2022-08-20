@@ -1,4 +1,9 @@
+.card-img{
+    border-radius:2%;
+    overflow:hidden;
+}
 .Card1{
+    border-radius: 50%;
     width: 1000px;
     height: 350px;
     margin-left: 150px;

@@ -145,6 +145,7 @@ class FilterTableMusic extends React.Component {
 
   updateMusic = () => {
     if(this.state.action == "e"){
+      console.log("Editando cancion")
       const music = {
         id: this.state.id,
         Nombre: this.state.Nombre,
@@ -165,6 +166,7 @@ class FilterTableMusic extends React.Component {
       .catch(err => { console.log(err) })
     }
     if(this.state.action == "a"){
+      console.log("Agregando cancion")
       const music = {
         Nombre: this.state.Nombre,
         Autor: this.state.Autor,
@@ -188,7 +190,8 @@ class FilterTableMusic extends React.Component {
   showModal = async (id,action) => {
     this.setState({ show: true });
 
-    const res = await axios.get("http://localhost:8000/api/music/" + id)
+    if(action == "e"){
+      const res = await axios.get("http://localhost:8000/api/music/" + id)
     this.setState({
       id: id,
       Nombre: res.data.Nombre,
@@ -200,6 +203,11 @@ class FilterTableMusic extends React.Component {
       Musica: res.data.Musica,
       action: action
     })
+    }else{
+      this.setState({
+        action: action
+      })
+    }
   };
 
   hideModal = () => {
@@ -222,7 +230,6 @@ class FilterTableMusic extends React.Component {
 
       const column = Object.keys(TableData[0])
       const ThData = () => {
-        console.log("montado")
         return column.map((data) => {
           return <th className="text-light" key={data}>{data}</th>
         })
